@@ -1,0 +1,173 @@
+/* ===== Auth login page — SOGAZ corporate design tokens ===== */
+:root {
+  --sogaz-navy: #00144d;
+  --sogaz-navy-2: #152149;
+  --sogaz-brand: #002899;
+  --sogaz-brand-hover: #184de5;
+  --sogaz-bg-soft: #f4f5f8;
+  --sogaz-green: #00a043;
+  --border: #e2e4ea;
+  --text: #152149;
+  --text-72: rgba(21, 33, 73, 0.72);
+  --red: #ef4444;
+  --font-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--sogaz-bg-soft);
+}
+
+/* ===== Login page centered card ===== */
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.login-card {
+  background: var(--sogaz-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 36px 32px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.login-card__title {
+  margin: 0 0 24px;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--sogaz-navy-2);
+  text-align: center;
+}
+
+.login-card__brand {
+  color: var(--sogaz-brand);
+  font-family: var(--sogaz-font-cond, 'InterDisplay', 'Inter', system-ui, sans-serif);
+  font-weight: 600;
+  font-size: 1em;            /* тот же размер, что и основная надпись */
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: baseline;  /* на одной базовой линии с «HR Портал» */
+  margin-left: 8px;
+}
+
+/* ===== Login form ===== */
+.login-form__label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.login-form__label-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-72);
+}
+
+.login-form__input {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.login-form__input:focus {
+  border-color: var(--sogaz-brand-hover);
+}
+
+.login-form__error {
+  margin: 0 0 16px;
+  padding: 8px 12px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius);
+  color: var(--red);
+  font-size: 13px;
+}
+
+/* ===== Button (shared shell styles) ===== */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--sogaz-brand-hover);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn:hover {
+  background: var(--sogaz-brand);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-form__btn {
+  margin-top: 8px;
+}
+
+/* ===== Demo accounts hint ===== */
+.login-card__demo {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-72);
+}
+
+.login-card__demo p {
+  margin: 0 0 6px;
+  font-weight: 500;
+}
+
+.login-card__demo-list {
+  margin: 0;
+  padding: 0 0 0 20px;
+  list-style: none;
+}
+
+.login-card__demo-list li {
+  margin-bottom: 2px;
+}
+
+.login-card__demo-list code {
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  background: var(--sogaz-bg-soft);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
