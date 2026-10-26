@@ -1,0 +1,609 @@
+/* ===== HR Portal Shell — SOGAZ corporate design tokens ===== */
+:root {
+  /* SOGAZ palette */
+  --sogaz-navy: #00144d;
+  --sogaz-navy-2: #152149;
+  --sogaz-navy-3: #000078;
+  --sogaz-brand: #002899;
+  --sogaz-brand-hover: #184de5;
+  --sogaz-blue-light: #cce4ff;
+  --sogaz-blue-mid: #87a6ff;
+  --sogaz-bg: #ffffff;
+  --sogaz-bg-soft: #f4f5f8;
+  --sogaz-green: #00a043;
+
+  /* backward-compat aliases (used by remote remotes via var fallbacks) */
+  --bg: var(--sogaz-bg-soft);
+  --surface: var(--sogaz-bg);
+  --surface-2: var(--sogaz-bg-soft);
+  --border: #e2e4ea;
+  --text: #152149;
+  --text-72: rgba(21, 33, 73, 0.72);
+  --text-48: rgba(21, 33, 73, 0.48);
+  --text-64: rgba(21, 33, 73, 0.64);
+  --accent: var(--sogaz-navy);
+  --blue: var(--sogaz-brand);
+  --green: var(--sogaz-green);
+  --orange: #f97316;
+  --red: #ef4444;
+  --font-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-cond: 'InterDisplay', 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+/* ===== Layout ===== */
+.layout {
+  display: flex;
+  min-height: 100dvh;
+}
+
+.sidebar {
+  width: 248px;
+  flex-shrink: 0;
+  background: var(--sogaz-navy);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 12px;
+}
+
+.sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px 20px;
+}
+
+.sidebar__logo {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius);
+  background: var(--sogaz-brand);
+  color: var(--sogaz-bg);
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 11px;
+  display: grid;
+  place-items: center;
+  letter-spacing: 0.04em;
+}
+
+.sidebar__name {
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.04em;
+  color: var(--sogaz-bg);
+}
+
+.sidebar__sogaz {
+  color: var(--sogaz-blue-light);
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 19px;          /* тот же размер, что и «Портал» */
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.sidebar__section {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 6px 10px 8px;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.nav-item--active {
+  background: var(--sogaz-brand);
+  border-color: var(--sogaz-brand);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.nav-item:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--sogaz-bg), 0 0 0 4px var(--sogaz-brand);
+}
+
+.nav-item__version {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.sidebar__footer {
+  margin-top: auto;
+  padding: 14px 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ===== Status dots ===== */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.status-dot--active {
+  background: var(--green);
+}
+.status-dot--planned {
+  background: var(--orange);
+}
+.status-dot--pending {
+  background: var(--orange);
+}
+.status-dot--rejected {
+  background: var(--red);
+}
+.status-dot--approved {
+  background: var(--green);
+}
+
+/* ===== Main / topbar ===== */
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  height: 56px;
+  background: var(--sogaz-navy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--sogaz-navy-2);
+}
+
+.topbar__crumb {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+.topbar__sep {
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0 4px;
+}
+
+.topbar__sogaz {
+  color: var(--sogaz-blue-light);
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 1em;           /* тот же размер, что и основная надпись кронки (15px) */
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.badge--env {
+  color: var(--orange);
+  border-color: rgba(249, 115, 22, 0.35);
+  background: rgba(249, 115, 22, 0.07);
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.user-chip__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--sogaz-brand);
+  color: var(--sogaz-bg);
+  font-family: var(--font-cond);
+  font-size: 13px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
+
+.user-chip__meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.user-chip__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.user-chip__role {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.content {
+  flex: 1;
+  padding: 24px;
+  max-width: 1080px;
+  width: 100%;
+  background: var(--sogaz-bg-soft);
+}
+
+/* ===== Buttons ===== */
+.btn {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 8px 18px;
+  border: 1px solid transparent;
+  background: var(--sogaz-brand);
+  color: var(--sogaz-bg);
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.btn:hover {
+  background: var(--sogaz-brand-hover);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--sogaz-bg), 0 0 0 4px var(--sogaz-brand);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--sogaz-navy);
+  border-color: var(--border);
+}
+
+.btn--secondary:hover {
+  background: var(--surface-2);
+  opacity: 1;
+}
+
+/* Кнопка «Выйти» в тёмной шапке: белый фон + синий текст (иначе синее на синем) */
+.btn--logout {
+  background: var(--sogaz-bg);
+  color: var(--sogaz-brand);
+  border-color: transparent;
+}
+.btn--logout:hover {
+  background: var(--sogaz-blue-light);
+}
+
+/* ===== Home page ===== */
+.sidebar__brand--btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  width: 100%;
+}
+
+.sidebar__brand--btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--sogaz-bg), 0 0 0 4px var(--sogaz-brand);
+  border-radius: var(--radius);
+}
+
+.home__title {
+  font-family: var(--font-cond);
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--sogaz-navy);
+}
+
+.home__sub {
+  color: var(--text-72);
+  max-width: 62ch;
+  margin: 0 0 24px;
+}
+
+.home__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.svc-card {
+  background: var(--sogaz-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(21, 33, 73, 0.06);
+}
+
+.svc-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.svc-card__title {
+  font-family: var(--font-cond);
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--sogaz-navy);
+}
+
+.svc-card__status {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+.svc-card__status--active {
+  background: rgba(9, 209, 113, 0.1);
+  color: #079a52;
+}
+
+.svc-card__status--planned {
+  background: var(--surface-2);
+  color: var(--text-48);
+}
+
+.svc-card__desc {
+  color: var(--text-72);
+  font-size: 14px;
+  margin: 0 0 6px;
+}
+
+.back-btn {
+  margin-bottom: 20px;
+}
+
+/* ===== Remote loading / error states ===== */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 48px 24px;
+  color: var(--text-48);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.loading__bar {
+  width: 220px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--border) 25%, var(--sogaz-blue-mid) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.remote-error {
+  border: 1px dashed rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.05);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+}
+
+.remote-error__title {
+  font-family: var(--font-cond);
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.remote-error__text {
+  color: var(--text-72);
+  margin: 0 0 16px;
+}
+
+/* ===== Placeholder for planned services ===== */
+.placeholder__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-48);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 16px;
+}
+
+.placeholder__title {
+  font-family: var(--font-cond);
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--sogaz-navy);
+}
+
+.placeholder__desc {
+  color: var(--text-72);
+  max-width: 62ch;
+  margin: 0 0 24px;
+}
+
+.placeholder__guide {
+  background: var(--sogaz-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  box-shadow: 0 1px 3px rgba(21, 33, 73, 0.06);
+}
+
+.placeholder__guide-title {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-48);
+  margin-bottom: 10px;
+}
+
+.placeholder__steps {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-72);
+}
+
+.placeholder__steps li {
+  margin-bottom: 6px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 72px;
+    padding: 16px 8px;
+  }
+  .sidebar__name,
+  .sidebar__sogaz,
+  .sidebar__section,
+  .nav-item__label,
+  .nav-item__version,
+  .sidebar__footer {
+    display: none;
+  }
+  .nav-item {
+    justify-content: center;
+  }
+  .topbar {
+    padding: 0 16px;
+  }
+  .user-chip__meta,
+  .badge {
+    display: none;
+  }
+  .content {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
