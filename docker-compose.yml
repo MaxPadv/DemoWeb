@@ -1,0 +1,83 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: hr
+      POSTGRES_PASSWORD: hr
+      POSTGRES_DB: hr
+    volumes:
+      - hr-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hr"]
+      interval: 3s
+      retries: 20
+
+  backend-structure:
+    build:
+      context: .
+      dockerfile: services/structure/backend/Dockerfile
+    environment:
+      DATABASE_URL: postgresql://hr:hr@db:5432/hr
+      AUTH_SECRET: hr-auth-secret-change-me
+    depends_on:
+      db:
+        condition: service_healthy
+
+  backend-vacations:
+    build:
+      context: .
+      dockerfile: services/vacations/backend/Dockerfile
+    environment:
+      DATABASE_URL: postgresql://hr:hr@db:5432/hr
+      AUTH_SECRET: hr-auth-secret-change-me
+    depends_on:
+      db:
+        condition: service_healthy
+
+  backend-auth:
+    build:
+      context: .
+      dockerfile: services/auth/backend/Dockerfile
+    environment:
+      DATABASE_URL: postgresql://hr:hr@db:5432/hr
+      AUTH_SECRET: hr-auth-secret-change-me
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend-structure:
+    build:
+      context: .
+      dockerfile: services/structure/frontend/Dockerfile
+
+  frontend-vacations:
+    build:
+      context: .
+      dockerfile: services/vacations/frontend/Dockerfile
+
+  frontend-shell:
+    build:
+      context: .
+      dockerfile: services/shell/Dockerfile
+
+  frontend-auth:
+    build:
+      context: .
+      dockerfile: services/auth/frontend/Dockerfile
+
+  gateway:
+    image: nginx:alpine
+    volumes:
+      - ./platform/gateway/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "8090:80"
+    depends_on:
+      - frontend-structure
+      - frontend-vacations
+      - frontend-shell
+      - backend-structure
+      - frontend-auth
+      - backend-auth
+
+volumes:
+  hr-pg:

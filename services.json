@@ -1,0 +1,36 @@
+[
+  {
+    "key": "structure",
+    "title": "Структура компании",
+    "description": "Оргструктура и подчинённость.",
+    "status": "active",
+    "version": "0.1.0",
+    "remote": { "name": "structure", "entry": "/mf/structure/remoteEntry.js", "module": "./App" }
+  },
+  {
+    "key": "vacations",
+    "title": "Отпуска",
+    "description": "Планирование и согласование отпусков.",
+    "status": "active",
+    "version": "0.1.0",
+    "remote": { "name": "vacations", "entry": "/mf/vacations/remoteEntry.js", "module": "./App" }
+  },
+  {
+    "key": "benefits",
+    "title": "Бенефиты",
+    "description": "ДМС, компенсации, корпоративные программы.",
+    "status": "planned"
+  },
+  {
+    "key": "onboarding",
+    "title": "Онбординг",
+    "description": "Адаптация новых сотрудников, задачи первых недель.",
+    "status": "planned"
+  },
+  {
+    "key": "time",
+    "title": "Учёт времени",
+    "description": "Табель, переработки, удалённая работа.",
+    "status": "planned"
+  }
+]
