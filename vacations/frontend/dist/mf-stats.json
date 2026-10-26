@@ -1,0 +1,102 @@
+{
+  "id": "vacations",
+  "name": "vacations",
+  "metaData": {
+    "name": "vacations",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "0.1.0",
+      "buildName": "vacations-remote"
+    },
+    "remoteEntry": {
+      "name": "remoteEntry.js",
+      "path": "",
+      "type": "global"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "",
+      "api": ""
+    },
+    "globalName": "vacations",
+    "pluginVersion": "2.9.2",
+    "publicPath": "/mf/vacations/"
+  },
+  "shared": [
+    {
+      "singleton": true,
+      "requiredVersion": "18.3.1",
+      "shareScope": "default",
+      "name": "react-dom",
+      "version": "18.3.1",
+      "eager": false,
+      "id": "vacations:react-dom",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "144.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "usedIn": [],
+      "usedExports": [],
+      "fallback": ""
+    },
+    {
+      "singleton": true,
+      "requiredVersion": "18.3.1",
+      "shareScope": "default",
+      "name": "react",
+      "version": "18.3.1",
+      "eager": false,
+      "id": "vacations:react",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "41.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "usedIn": [
+        "./App"
+      ],
+      "usedExports": [],
+      "fallback": ""
+    }
+  ],
+  "remotes": [],
+  "exposes": [
+    {
+      "path": "./App",
+      "id": "vacations:App",
+      "name": "App",
+      "requires": [
+        "react"
+      ],
+      "file": "src/VacationsApp",
+      "assets": {
+        "js": {
+          "sync": [
+            "__federation_expose_App.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      }
+    }
+  ]
+}

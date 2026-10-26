@@ -1,0 +1,1088 @@
+/* ===== Vacations remote — все классы с префиксом vc- (изоляция стилей remote) ===== */
+.vc {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--sogaz-navy, #152149);
+  font-family: var(--sogaz-font-ui, 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
+}
+
+.vc-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.vc-title {
+  font-family: var(--sogaz-font-cond, 'InterDisplay', 'Inter', system-ui, sans-serif);
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  letter-spacing: 0.01em;
+  color: var(--sogaz-navy, #152149);
+}
+
+.vc-sub {
+  margin: 0;
+  font-size: 13px;
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+}
+
+.vc-ver {
+  font-family: var(--sogaz-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 11px;
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+  border: 1px solid var(--sogaz-border, #e2e4ea);
+  border-radius: 999px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+/* ===== Stats ===== */
+.vc-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.vc-stat {
+  background: var(--sogaz-bg, #ffffff);
+  border: 1px solid var(--sogaz-border, #e2e4ea);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: 0 1px 3px rgba(21, 33, 73, 0.06);
+}
+
+.vc-stat__value {
+  font-family: var(--sogaz-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.vc-stat__value--pending {
+  color: #f97316;
+}
+
+.vc-stat__value--ok {
+  color: #09d171;
+}
+
+.vc-stat__label {
+  font-family: var(--sogaz-font-cond, 'InterDisplay', 'Inter', system-ui, sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+}
+
+/* ===== Cards ===== */
+.vc-card {
+  background: var(--sogaz-bg, #ffffff);
+  border: 1px solid var(--sogaz-border, #e2e4ea);
+  border-radius: 8px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 3px rgba(21, 33, 73, 0.06);
+}
+
+.vc-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.vc-card__title {
+  font-family: var(--sogaz-font-cond, 'InterDisplay', 'Inter', system-ui, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+  margin: 0 0 14px;
+}
+
+.vc-card__head .vc-card__title {
+  margin: 0;
+}
+
+/* ===== Form ===== */
+.vc-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 200px)) 1fr;
+  gap: 14px;
+  align-items: end;
+}
+
+.vc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.vc-field--wide {
+  min-width: 0;
+}
+
+.vc-field__label {
+  font-family: var(--sogaz-font-cond, 'InterDisplay', 'Inter', system-ui, sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+}
+
+.vc-field input,
+.vc-field select {
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--sogaz-navy, #152149);
+  background: var(--sogaz-bg-soft, #f4f5f8);
+  border: 1px solid var(--sogaz-border, #e2e4ea);
+  border-radius: 6px;
+  padding: 8px 10px;
+  width: 100%;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.vc-field input:focus-visible,
+.vc-field select:focus-visible {
+  outline: none;
+  border-color: var(--sogaz-brand, #184de5);
+  box-shadow: 0 0 0 2px var(--sogaz-blue-light, rgba(24, 77, 229, 0.15));
+}
+
+.vc-form__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.vc-msg {
+  font-size: 13px;
+}
+
+.vc-msg--error {
+  color: #dc2626;
+}
+
+.vc-msg--ok {
+  color: #09d171;
+}
+
+.vc-msg--warn {
+  color: #b45309; /* янтарный предупреждения — пересечение с коллегой, не блок */
+}
+
+/* ===== Buttons (локальные, чтобы remote работал и standalone) ===== */
+.vc-btn {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 8px 18px;
+  border: 1px solid transparent;
+  background: var(--sogaz-brand, #184de5);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.vc-btn:hover {
+  background: var(--sogaz-brand-hover, #2b5ce9);
+}
+
+.vc-btn:active {
+  transform: scale(0.98);
+}
+
+.vc-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--sogaz-bg, #fff), 0 0 0 4px var(--sogaz-brand, #184de5);
+}
+
+.vc-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.vc-btn--ghost {
+  background: transparent;
+  color: var(--sogaz-navy, #152149);
+  border-color: var(--sogaz-border, #e2e4ea);
+}
+
+.vc-btn--ghost:hover {
+  background: var(--sogaz-bg-soft, #f4f5f8);
+  opacity: 1;
+}
+
+.vc-btn--mini {
+  font-size: 12px;
+  padding: 4px 12px;
+}
+
+.vc-btn--danger {
+  background: transparent;
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #dc2626;
+}
+
+.vc-btn--danger:hover {
+  background: rgba(239, 68, 68, 0.07);
+  opacity: 1;
+}
+
+.vc-actions {
+  display: inline-flex;
+  gap: 8px;
+}
+
+/* ===== Table ===== */
+.vc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.vc-table th {
+  font-family: var(--sogaz-font-cond, 'InterDisplay', 'Inter', system-ui, sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+  text-align: left;
+  padding: 8px 10px;
+  background: var(--sogaz-bg-soft, #f4f5f8);
+  border-bottom: 1px solid var(--sogaz-border, #e2e4ea);
+}
+
+.vc-table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--sogaz-border, #e2e4ea);
+  vertical-align: middle;
+}
+
+.vc-table tbody tr:hover {
+  background: var(--sogaz-bg-soft, #f4f5f8);
+}
+
+.vc-mono {
+  font-family: var(--sogaz-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 13px;
+}
+
+.vc-dim {
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+}
+
+/* ===== Status pills ===== */
+.vc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 999px;
+  padding: 3px 11px;
+  border: 1px solid var(--sogaz-border, #e2e4ea);
+  white-space: nowrap;
+}
+
+.vc-pill__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.vc-pill--pending {
+  color: #c2410c;
+  border-color: rgba(249, 115, 22, 0.35);
+  background: rgba(249, 115, 22, 0.07);
+}
+.vc-pill--pending .vc-pill__dot {
+  background: #f97316;
+}
+
+.vc-pill--approved {
+  color: #079a52;
+  border-color: rgba(9, 209, 113, 0.35);
+  background: rgba(9, 209, 113, 0.07);
+}
+.vc-pill--approved .vc-pill__dot {
+  background: #09d171;
+}
+
+.vc-pill--rejected {
+  color: #b91c1c;
+  border-color: rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.07);
+}
+.vc-pill--rejected .vc-pill__dot {
+  background: #ef4444;
+}
+
+/* ===== Skeleton / empty ===== */
+.vc-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.vc-skeleton__row {
+  height: 38px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--sogaz-bg-soft, #f4f5f8) 25%, #e2e4ea 50%, var(--sogaz-bg-soft, #f4f5f8) 75%);
+  background-size: 200% 100%;
+  animation: vc-shimmer 1.2s linear infinite;
+}
+
+@keyframes vc-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.vc-empty {
+  border: 1px dashed var(--sogaz-border, #e2e4ea);
+  border-radius: 8px;
+  padding: 28px 20px;
+  text-align: center;
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+}
+
+.vc-empty p {
+  margin: 0 0 12px;
+}
+
+/* ===== Tab switcher ===== */
+.vc-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--sogaz-border, #e2e4ea);
+}
+
+.vc-tab {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.vc-tab:hover {
+  color: var(--sogaz-navy, #152149);
+}
+
+.vc-tab--active {
+  color: var(--sogaz-navy, #152149);
+  border-bottom-color: var(--sogaz-brand, #184de5);
+}
+
+@media (max-width: 600px) {
+  .vc-tab {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .vc-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .vc-stats {
+    grid-template-columns: 1fr;
+  }
+  .vc-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vc *,
+  .vc *::before,
+  .vc *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== Overlaps section (префикс ov-) ===== */
+.ov-vacations {
+  margin-bottom: 16px;
+}
+
+.ov-overlaps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ov-overlaps__title {
+  font-family: var(--sogaz-font-cond, 'InterDisplay', 'Inter', system-ui, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+  margin: 16px 0 4px;
+}
+
+.ov-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: rgba(239, 68, 68, 0.04);
+  font-size: 14px;
+}
+
+.ov-row__days {
+  margin-left: auto;
+  font-weight: 600;
+  color: #b91c1c;
+  white-space: nowrap;
+}
+
+.ov-empty {
+  font-size: 13px;
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+  margin: 0;
+  padding: 4px 0;
+}
+
+@media (max-width: 900px) {
+  .ov-row {
+    flex-wrap: wrap;
+  }
+  .ov-row__days {
+    margin-left: 0;
+    width: 100%;
+    padding-top: 4px;
+  }
+}
+
+/* ===== Department calendar (префикс ov-cal) ===== */
+.ov-cal {
+  overflow-x: auto;
+  margin-bottom: 8px;
+}
+
+.ov-cal__grid {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 600px;
+  table-layout: fixed;
+  font-size: 12px;
+}
+
+.ov-cal__month {
+  font-weight: 600;
+  text-align: center;
+  padding: 4px 0;
+  background: var(--sogaz-bg-soft, #f4f5f8);
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.ov-cal__header {
+  background: var(--sogaz-bg-soft, #f4f5f8);
+}
+
+.ov-cal__header td,
+.ov-cal__header th {
+  padding: 2px;
+  text-align: center;
+  vertical-align: bottom;
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--sogaz-text-64, rgba(21, 33, 73, 0.64));
+  border-bottom: 2px solid var(--sogaz-border, #e2e4ea);
+}
+
+.ov-cal__cell {
+  padding: 1px;
+  text-align: center;
+  vertical-align: middle;
+  height: 22px;
+  border-right: 1px solid rgba(21, 33, 73, 0.04);
+}
+
+.ov-cal__cell--on {
+  background: var(--sogaz-brand, #184de5);
+  border-radius: 2px;
+  position: relative;
+}
+
+.ov-cal__cell--on:hover {
+  background: var(--sogaz-brand-hover, #2b5ce9);
+}
+
+.ov-cal__cell--conflict {
+  background: #ef4444;
+  border-radius: 2px;
+  animation: ov-cal-pulse 2s ease-in-out infinite;
+}
+
+.ov-cal__cell--conflict:hover {
+  background: #dc2626;
+}
+
+@keyframes ov-cal-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
+
+.ov-cal__employee-name {
+  font-weight: 600;
+  white-space: nowrap;
+  padding-right: 8px;
+  min-width: 120px;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 12px;
+  color: var(--sogaz-navy, #152149);
+}
+
+.ov-cal__legend {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--sogaz-text-64, rgba(21, 33, 73, 0.64));
+  padding: 8px 0;
+}
+
+.ov-cal__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ov-cal__legend-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.ov-cal__legend-swatch--on {
+  background: var(--sogaz-brand, #184de5);
+}
+
+.ov-cal__legend-swatch--conflict {
+  background: #ef4444;
+}
+
+@media (max-width: 900px) {
+  .ov-cal__grid {
+    font-size: 10px;
+  }
+  .ov-cal__employee-name {
+    min-width: 90px;
+  }
+}
+
+/* ===== Paper Calendar 2027 (префикс pc-) ===== */
+.pc-cal {
+  padding: 4px 0;
+}
+
+.pc-cal__legend {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--sogaz-text-64, rgba(21, 33, 73, 0.64));
+  padding: 0 0 12px;
+}
+
+.pc-cal__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pc-cal__legend-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.pc-cal__legend-swatch--on {
+  background: var(--sogaz-brand, #184de5);
+}
+
+.pc-cal__legend-swatch--conflict {
+  background: #ef4444;
+}
+
+.pc-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.pc-month {
+  border: 1px solid var(--sogaz-border, #e2e4ea);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--sogaz-bg, #ffffff);
+  box-shadow: 0 1px 3px rgba(21, 33, 73, 0.06);
+}
+
+.pc-month__header {
+  font-family: var(--sogaz-font-cond, 'InterDisplay', 'Inter', system-ui, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+  text-align: center;
+  padding: 8px 4px;
+  background: var(--sogaz-bg-soft, #f4f5f8);
+  border-bottom: 1px solid var(--sogaz-border, #e2e4ea);
+}
+
+.pc-month table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 11px;
+}
+
+.pc-weekday {
+  font-family: var(--sogaz-font-cond, 'InterDisplay', 'Inter', system-ui, sans-serif);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+  text-align: center;
+  padding: 4px 2px;
+  background: var(--sogaz-bg-soft, #f4f5f8);
+  border-bottom: 1px solid var(--sogaz-border, #e2e4ea);
+}
+
+.pc-cell {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0;
+  height: 28px;
+  border-right: 1px solid rgba(21, 33, 73, 0.04);
+  border-bottom: 1px solid rgba(21, 33, 73, 0.04);
+  position: relative;
+}
+
+.pc-cell--empty {
+  background: transparent;
+}
+
+/* Праздники/переносы — красный; выходные (сб/вс) — серый. Объявлены раньше
+   --on/--conflict/--sel, поэтому те перекрывают их по CSS-порядку (приоритет --sel). */
+.pc-cell--holiday {
+  background: rgba(214, 47, 47, 0.10);
+  color: #d62f2f;
+}
+.pc-cell--holiday .pc-cell__num {
+  color: #d62f2f;
+  font-weight: 700;
+}
+.pc-cell--weekend {
+  background: var(--sogaz-bg-soft, #f4f5f8);
+}
+.pc-cell--weekend .pc-cell__num {
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+}
+
+.pc-cell--on {
+  background: var(--sogaz-brand, #184de5);
+  border-radius: 0;
+}
+
+.pc-cell--on:hover {
+  background: var(--sogaz-brand-hover, #2b5ce9);
+}
+
+.pc-cell--conflict {
+  background: #ef4444;
+  border-radius: 0;
+}
+
+.pc-cell--conflict:hover {
+  background: #dc2626;
+}
+
+/* ===== Выбор периода отпуска (клик по дням) ===== */
+.pc-cell:not(.pc-cell--empty) {
+  cursor: pointer;
+}
+
+/* заливка выбранного периода (перекрывает --on/--conflict) */
+.pc-cell--sel {
+  background: rgba(24, 77, 229, 0.22);
+}
+.pc-cell--sel .pc-cell__num {
+  color: var(--sogaz-brand, #184de5);
+  font-weight: 600;
+}
+/* границы периода — акцент */
+.pc-cell--sel-start,
+.pc-cell--sel-end {
+  background: var(--sogaz-brand, #184de5);
+  box-shadow: inset 0 0 0 1px var(--sogaz-brand-hover, #2b5ce9);
+}
+.pc-cell--sel-start .pc-cell__num,
+.pc-cell--sel-end .pc-cell__num {
+  color: #ffffff;
+}
+.pc-cell--sel-start:hover,
+.pc-cell--sel-end:hover {
+  background: var(--sogaz-brand-hover, #2b5ce9);
+}
+
+.pc-cell__num {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--sogaz-navy, #152149);
+  padding: 1px 2px 0;
+  line-height: 1;
+}
+
+.pc-cell--on .pc-cell__num,
+.pc-cell--conflict .pc-cell__num {
+  color: #ffffff;
+}
+
+.pc-inits {
+  display: block;
+  font-size: 9px;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 0 2px 1px;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pc-skeleton {
+  height: 180px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--sogaz-bg-soft, #f4f5f8) 25%, #e2e4ea 50%, var(--sogaz-bg-soft, #f4f5f8) 75%);
+  background-size: 200% 100%;
+  animation: vc-shimmer 1.2s linear infinite;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+  .pc-cal__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pc-inits {
+    font-size: 8px;
+  }
+  .pc-cell__num {
+    font-size: 10px;
+  }
+}
+
+/* ===== Collapse toggle bar ===== */
+.pc-collapse-bar {
+  text-align: center;
+  padding: 8px 0 16px;
+}
+
+@media (max-width: 520px) {
+  .pc-cal__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Overlaps section ===== */
+.pc-overlaps {
+  margin-top: 16px;
+  border-top: 1px solid var(--sogaz-border, #e2e4ea);
+  padding-top: 16px;
+}
+
+.pc-overlaps__title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--sogaz-navy, #152149);
+}
+
+.pc-overlap-line {
+  padding: 4px 0;
+  font-size: 14px;
+}
+
+.pc-overlaps-empty {
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+  font-size: 14px;
+  padding: 4px 0;
+}
+
+.pc-overlaps-toggle { display: block; margin: 10px auto 0; }
+
+.vc-table-toggle { display: block; margin: 12px auto 0; }
+
+.vc-date-wrap { position: relative; display: block; }
+.vc-date-wrap { position: relative; display: block; }
+.vc-date-wrap input { width: 100%; }
+.vc-date-placeholder { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #8a8f98; font-size: 14px; white-space: nowrap; }
+/* скрыть нативный плейсхолдер «дд.мм.гггг», когда поле пустое (видна только наша заглушка) */
+.vc-date-wrap input.vc-date-empty::-webkit-datetime-edit,
+.vc-date-wrap input.vc-date-empty::-webkit-datetime-edit-fields-wrapper,
+.vc-date-wrap input.vc-date-empty::-webkit-datetime-edit-text,
+.vc-date-wrap input.vc-date-empty::-webkit-datetime-edit-day-field,
+.vc-date-wrap input.vc-date-empty::-webkit-datetime-edit-month-field,
+.vc-date-wrap input.vc-date-empty::-webkit-datetime-edit-year-field {
+  color: transparent;
+}
+/* ===== Service selection cards ===== */
+.vc-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.vc-head-main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.vc-back {
+  font-family: var(--sogaz-font-ui, 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sogaz-brand, #184de5);
+  background: none;
+  border: none;
+  padding: 4px 0;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: color 150ms ease;
+}
+.vc-back:hover {
+  color: var(--sogaz-brand-hover, #2b5ce9);
+}
+.vc-back:focus-visible {
+  outline: 2px solid var(--sogaz-brand, #184de5);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.vc-service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.vc-service-card {
+  background: var(--sogaz-bg, #ffffff);
+  border: 1px solid var(--sogaz-border, #e2e4ea);
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(21, 33, 73, 0.06);
+  transition: box-shadow 150ms ease, transform 150ms ease;
+  cursor: default;
+}
+.vc-service-card:hover {
+  box-shadow: 0 4px 12px rgba(21, 33, 73, 0.10);
+  transform: translateY(-2px);
+}
+.vc-service-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+.vc-service-card__title {
+  font-family: var(--sogaz-font-cond, 'InterDisplay', 'Inter', system-ui, sans-serif);
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--sogaz-navy, #152149);
+}
+.vc-service-card__desc {
+  color: var(--sogaz-text-72, rgba(21, 33, 73, 0.72));
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.45;
+}
+.vc-service-card__cta {
+  margin-top: auto;
+  align-self: flex-start;
+}
+/* ===== Badges ===== */
+.vc-badge {
+  font-family: var(--sogaz-font-ui, 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.vc-badge--ok {
+  background: rgba(9, 209, 113, 0.1);
+  color: #079a52;
+}
+.vc-badge--dev {
+  background: var(--sogaz-bg-soft, #f4f5f8);
+  color: var(--sogaz-text-48, rgba(21, 33, 73, 0.48));
+}
+@media (max-width: 700px) {
+  .vc-service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vc-form .vc-field--comment { grid-column: 3 / -1; min-width: 0; }
+
+.vc-field textarea {
+  width: 100%;
+  padding: 8px 10px;               /* как у input дат */
+  border: 1px solid var(--sogaz-border, #e2e4ea);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--sogaz-navy, #00144d);
+  resize: none;                    /* без ручки растягивания */
+  height: 38px;                    /* та же высота, что у полей дат */
+  overflow-y: auto;                /* при длинном тексте — внутренний скролл */
+  scrollbar-width: none;           /* Firefox: скрыть полосу/стрелки */
+  box-sizing: border-box;
+}
+.vc-field textarea::-webkit-scrollbar { display: none; }   /* Chrome: скрыть полосу/стрелки */
+.vc-field textarea:focus { outline: 2px solid var(--sogaz-brand, #002899); outline-offset: 1px; }
+/* ===== Vacation tooltip (префикс pc-tooltip-) ===== */
+.pc-tooltip {
+  position: fixed;
+  z-index: 9999;
+  background: #1a1a2e;
+  color: #ffffff;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  max-width: 320px;
+  pointer-events: none;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.pc-tooltip__row {
+  padding: 2px 0;
+}
+
+.pc-tooltip__row + .pc-tooltip__row {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 4px;
+  margin-top: 2px;
+}
+
+.pc-tooltip__overlap {
+  color: #ff6b6b;
+  font-weight: 600;
+  padding: 2px 0;
+}
+
+/* Тултип праздника: наследует размер текста у .pc-tooltip__row (13px), красный акцент. */
+.pc-tooltip--holiday {
+  border-left: 3px solid #d62f2f;
+}
+.pc-tooltip--holiday .pc-tooltip__row {
+  color: #ffdada;
+}
+
+/* ===== FAQ «?» у заголовка ===== */
+.vc-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+.vc-faq {
+  font-family: var(--sogaz-font-ui, 'Inter', system-ui, sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--sogaz-brand, #184de5);
+  background: transparent;
+  border: 1px solid var(--sogaz-border, #e2e4ea);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+.vc-faq:hover,
+.vc-faq[aria-expanded="true"] {
+  color: #ffffff;
+  background: var(--sogaz-brand, #184de5);
+  border-color: var(--sogaz-brand, #184de5);
+}
+.vc-faq:focus-visible {
+  outline: 2px solid var(--sogaz-brand, #184de5);
+  outline-offset: 2px;
+}
+.vc-faq-tip {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 20;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  background: var(--sogaz-bg, #ffffff);
+  border: 1px solid var(--sogaz-border, #e2e4ea);
+  border-radius: var(--radius, 8px);
+  box-shadow: 0 6px 20px rgba(21, 33, 73, 0.12);
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--sogaz-navy, #152149);
+  text-align: left;
+}
+.vc-faq-tip__title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.vc-faq-tip__list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
